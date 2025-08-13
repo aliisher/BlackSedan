@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react';
 import { View, Image, StyleSheet, StatusBar } from 'react-native';
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 const SplashScreen = ({ navigation }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       navigation.replace('FlowNavigation');
-    }, 2500);
+    }, 4500);
 
     return () => clearTimeout(timer);
   }, [navigation]);
@@ -15,7 +18,7 @@ const SplashScreen = ({ navigation }) => {
     <View style={styles.container}>
       <StatusBar barStyle="light-content" backgroundColor="#000" />
       <Image
-        source={require('../src/Assets/logo.png')}
+        source={require('../src/Assets/logo_animation.gif')}
         style={styles.logo}
         resizeMode="contain"
       />
