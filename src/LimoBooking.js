@@ -11,31 +11,56 @@ import {
 } from 'react-native';
 import { WebView } from 'react-native-webview';
 import { hp, wp } from './Constant/Responsive';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const LimoBooking = () => {
   const webviewRef = useRef(null);
 
-  const handleFooterPress = () => {
-    Linking.openURL('https://www.blacksedans.ca');
+  const handleBookNow = () => {
+    Linking.openURL('https://booking.blacksedans.ca/');
+  };
+
+  const handleCall = () => {
+    Linking.openURL('tel:+182573555381');
+  };
+
+  const handleEmail = () => {
+    Linking.openURL('mailto:info@blacksedans.ca');
   };
 
   return (
     <View style={styles.container}>
       <StatusBar barStyle="dark-content" backgroundColor="#ffffff" />
 
-      {/* 🚀 Premium Header */}
+      {/* 🚖 Website Style Split Header */}
       <View style={styles.header}>
-        <View style={styles.headerContent}>
+        {/* Left: Logo */}
+        <View style={styles.logoContainer}>
           <Image
             source={require('../src/Assets/logo.png')}
             style={styles.logo}
             resizeMode="contain"
           />
-          <View style={styles.centerContainer}>
-            <Text style={styles.title}>Limo Booking</Text>
-            <Text style={styles.subtitle}>Premium Transportation</Text>
-          </View>
-          <View style={styles.emptyView} />
+        </View>
+
+        {/* Right: Dispatch & Email */}
+        <View style={styles.contactContainer}>
+          {/* Dispatch */}
+          <TouchableOpacity style={styles.contactRow} onPress={handleCall}>
+            <View style={{ alignItems: 'flex-start' }}>
+              <Text style={styles.dispatchTitle}>Dispatch Line 24/7</Text>
+              <View style={styles.callRow}>
+                <Icon name="call" size={wp(4.5)} color="#000" />
+                <Text style={styles.dispatchNumber}>+1 825-735-55381</Text>
+              </View>
+            </View>
+          </TouchableOpacity>
+
+          {/* Email */}
+          <TouchableOpacity style={styles.contactRow} onPress={handleEmail}>
+            <Icon name="mail" size={wp(4.5)} color="#000" />
+            <Text style={styles.contactText}>info@blacksedans.ca</Text>
+          </TouchableOpacity>
         </View>
       </View>
 
@@ -48,16 +73,6 @@ const LimoBooking = () => {
         startInLoadingState
         style={styles.webview}
       />
-
-      {/* 🌍 Informative Footer */}
-      <TouchableOpacity style={styles.footer}>
-        <Text style={styles.footerText}>
-          Book your premium ride directly through this app
-        </Text>
-        <Text style={styles.footerSubtext}>
-          Instant confirmation • 24/7 availability • Luxury vehicles
-        </Text>
-      </TouchableOpacity>
     </View>
   );
 };
@@ -70,74 +85,59 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
   },
   header: {
-    backgroundColor: '#ffffff',
-    paddingTop: Platform.OS === 'ios' ? hp(4) : hp(2),
-    paddingBottom: hp(2),
-    paddingHorizontal: wp(5),
-    borderBottomWidth: 1,
-    borderBottomColor: '#e8e8e8',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 6,
-    elevation: 5,
-    zIndex: 10,
-  },
-  headerContent: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'space-between', // logo left, contact right
+    backgroundColor: '#fff',
+    paddingTop: Platform.OS === 'ios' ? hp(4) : hp(2),
+    paddingBottom: hp(1.5),
+    paddingRight: wp(4),
+    borderBottomWidth: 1,
+    borderBottomColor: '#ddd',
+    elevation: 3,
+  },
+  logoContainer: {
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    width: wp(38),
+    height: hp(8),
   },
   logo: {
-    width: wp(25),
-    height: hp(5),
+    width: wp(38),
+    height: hp(8),
   },
-  centerContainer: {
+  contactContainer: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: 'flex-end',
     justifyContent: 'center',
-    marginHorizontal: wp(2),
   },
-  emptyView: {
-    width: wp(10),
+  callRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: hp(0.5),
   },
-  title: {
-    fontSize: wp(5.5),
-    fontWeight: '700',
-    color: '#1a1a1a',
-    letterSpacing: 0.8,
-    textTransform: 'uppercase',
-    textAlign: 'center',
-  },
-  subtitle: {
-    fontSize: wp(3.2),
+  dispatchTitle: {
+    fontSize: wp(4.2),
     fontWeight: '500',
-    color: '#666',
-    letterSpacing: 0.3,
-    marginTop: hp(0.3),
-    textAlign: 'center',
+    color: '#000',
+    marginRight: wp(1.5),
+  },
+  dispatchNumber: {
+    fontSize: wp(3.2),
+    color: '#000',
+    marginLeft: wp(1),
+  },
+  contactRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: hp(0.5),
+  },
+  contactText: {
+    fontSize: wp(3.2),
+    color: '#000',
+    marginLeft: wp(1.5),
   },
   webview: {
     flex: 1,
-  },
-  footer: {
-    paddingVertical: hp(1.5),
-    paddingHorizontal: wp(4),
-    alignItems: 'center',
-    borderTopWidth: 1,
-    borderTopColor: '#e8e8e8',
-    backgroundColor: '#f9f9f9',
-  },
-  footerText: {
-    fontSize: wp(3.8),
-    fontWeight: '600',
-    color: '#333',
-    textAlign: 'center',
-    marginBottom: hp(0.5),
-  },
-  footerSubtext: {
-    fontSize: wp(3),
-    color: '#666',
-    textAlign: 'center',
   },
 });
