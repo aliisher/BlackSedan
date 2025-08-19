@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Image,
   StatusBar,
@@ -5,65 +6,82 @@ import {
   Text,
   View,
   TouchableOpacity,
+  ImageBackground,
 } from 'react-native';
-import React from 'react';
 import { hp, wp } from './Constant/Responsive';
 import { useNavigation } from '@react-navigation/native';
 
 const BookNow = () => {
   const navigation = useNavigation();
+
   const handleBookNow = () => {
-    console.log('Book Now Pressed');
     navigation.navigate('LimoBooking');
-    // yahan ap apna navigation ya API call laga sakte ho
   };
 
   return (
-    <View style={styles.container}>
-      <StatusBar barStyle="light-content" backgroundColor="#000" />
+    <ImageBackground
+      source={require('../src/Assets/bmw.png')} // BMW background
+      style={styles.bgImage}
+      resizeMode="contain"
+    >
+      <StatusBar barStyle="dark-content" />
 
-      <Image
-        source={require('../src/Assets/logo.png')}
-        style={styles.logo}
-        resizeMode="contain"
-      />
+      {/* Logo Top */}
+      <View style={styles.logoContainer}>
+        <Image
+          source={require('../src/Assets/logo.png')}
+          style={styles.logo}
+          resizeMode="contain"
+        />
+      </View>
 
-      <TouchableOpacity style={styles.bookNowBtn} onPress={handleBookNow}>
-        <Text style={styles.bookNowText}>Book Now</Text>
-      </TouchableOpacity>
-    </View>
+      {/* Button Bottom */}
+      <View style={styles.bottomContainer}>
+        <TouchableOpacity style={styles.bookNowBtn} onPress={handleBookNow}>
+          <Text style={styles.bookNowText}>Book Now</Text>
+        </TouchableOpacity>
+      </View>
+    </ImageBackground>
   );
 };
 
 export default BookNow;
 
 const styles = StyleSheet.create({
-  container: {
+  bgImage: {
     flex: 1,
-    backgroundColor: '#ffffff', // galti thi, 5 'f' ki jagah 6 kar diye
-    justifyContent: 'center',
+    width: '100%',
+    height: '100%',
+  },
+  logoContainer: {
+    marginTop: hp('15%'),
     alignItems: 'center',
   },
   logo: {
-    width: wp('90%'),
-    height: hp('30%'),
-    marginBottom: hp('5%'),
+    width: wp('100%'),
+    height: hp('15%'),
+  },
+  bottomContainer: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    marginBottom: hp('18%'),
   },
   bookNowBtn: {
-    backgroundColor: '#000000',
-    paddingVertical: hp('2%'),
-    paddingHorizontal: wp('20%'),
+    backgroundColor: '#000',
+    paddingVertical: hp('1.8%'),
+    paddingHorizontal: wp('16%'),
     borderRadius: wp('3%'),
     shadowColor: '#000',
-    shadowOpacity: 0.2,
+    shadowOpacity: 0.25,
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 3,
-    elevation: 3,
+    elevation: 5,
   },
   bookNowText: {
     color: '#fff',
-    fontSize: wp('5%'),
-    fontWeight: '600',
+    fontSize: wp('4.7%'),
+    fontWeight: '700',
     textAlign: 'center',
   },
 });
