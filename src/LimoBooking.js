@@ -99,12 +99,12 @@ const styles = StyleSheet.create({
   logoContainer: {
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
-    width: wp(38),
-    height: hp(8),
+    // width: wp(42),
+    // height: hp(10),
   },
   logo: {
-    width: wp(38),
-    height: hp(8),
+    width: wp(50),
+    height: hp(10),
   },
   contactContainer: {
     flex: 1,

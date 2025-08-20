@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Image,
   StatusBar,
   StyleSheet,
   Text,
@@ -20,23 +19,15 @@ const BookNow = () => {
 
   return (
     <ImageBackground
-      source={require('../src/Assets/bmw.png')} // BMW background
+      source={{ uri: 'https://blacksedans.ca/public/header/images/about.webp' }}
       style={styles.bgImage}
-      resizeMode="contain"
+      resizeMode="cover"
     >
       <StatusBar barStyle="dark-content" />
 
-      {/* Logo Top */}
-      <View style={styles.logoContainer}>
-        <Image
-          source={require('../src/Assets/logo.png')}
-          style={styles.logo}
-          resizeMode="contain"
-        />
-      </View>
-
-      {/* Button Bottom */}
-      <View style={styles.bottomContainer}>
+      {/* Overlay Box */}
+      <View style={styles.overlayBox}>
+        <Text style={styles.heading}>PRIVATE CHAUFFEUR SERVICE IN CALGARY</Text>
         <TouchableOpacity style={styles.bookNowBtn} onPress={handleBookNow}>
           <Text style={styles.bookNowText}>Book Now</Text>
         </TouchableOpacity>
@@ -52,36 +43,38 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     height: '100%',
+    justifyContent: 'center', // center box vertically
+    alignItems: 'center', // center box horizontally
   },
-  logoContainer: {
-    marginTop: hp('15%'),
+  overlayBox: {
+    backgroundColor: 'rgba(255,255,255,0.9)', // semi-transparent white
+    paddingVertical: hp('5%'),
+    paddingHorizontal: wp('6%'),
+    borderRadius: wp('2%'),
     alignItems: 'center',
+    width: '90%',
+    shadowColor: '#000',
+    shadowOpacity: 0.3,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 4,
+    elevation: 5,
   },
-  logo: {
-    width: wp('100%'),
-    height: hp('15%'),
-  },
-  bottomContainer: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    marginBottom: hp('18%'),
+  heading: {
+    fontSize: wp('5%'),
+    fontWeight: '700',
+    color: '#000',
+    textAlign: 'center',
+    marginBottom: hp('3%'),
   },
   bookNowBtn: {
     backgroundColor: '#000',
     paddingVertical: hp('1.8%'),
-    paddingHorizontal: wp('16%'),
+    paddingHorizontal: wp('12%'),
     borderRadius: wp('3%'),
-    shadowColor: '#000',
-    shadowOpacity: 0.25,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 3,
-    elevation: 5,
   },
   bookNowText: {
     color: '#fff',
-    fontSize: wp('4.7%'),
-    fontWeight: '700',
-    textAlign: 'center',
+    fontSize: wp('4.5%'),
+    fontWeight: '600',
   },
 });
