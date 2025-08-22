@@ -27,7 +27,12 @@ const BookNow = () => {
 
       {/* Overlay Box */}
       <View style={styles.overlayBox}>
-        <Text style={styles.heading}>PRIVATE CHAUFFEUR SERVICE IN CALGARY</Text>
+        {/* App Name */}
+        <Text style={styles.appName}>BlackSedan</Text>
+
+        {/* Subheading */}
+        <Text style={styles.subHeading}>PRIVATE CHAUFFEUR SERVICE</Text>
+
         <TouchableOpacity style={styles.bookNowBtn} onPress={handleBookNow}>
           <Text style={styles.bookNowText}>Book Now</Text>
         </TouchableOpacity>
@@ -43,11 +48,11 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     height: '100%',
-    justifyContent: 'center', // center box vertically
-    alignItems: 'center', // center box horizontally
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   overlayBox: {
-    backgroundColor: 'rgba(255,255,255,0.9)', // semi-transparent white
+    backgroundColor: 'rgba(255,255,255,0.9)',
     paddingVertical: hp('5%'),
     paddingHorizontal: wp('6%'),
     borderRadius: wp('2%'),
@@ -59,22 +64,29 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
   },
-  heading: {
-    fontSize: wp('5%'),
-    fontWeight: '700',
+  appName: {
+    fontSize: wp('7%'), // bigger text
+    fontFamily: 'Lato-Black',
     color: '#000',
     textAlign: 'center',
-    marginBottom: hp('3%'),
+    marginBottom: hp('1.5%'),
+  },
+  subHeading: {
+    fontSize: wp('5%'), // smaller than appName
+    fontFamily: 'Lato-Medium',
+    color: '#333',
+    textAlign: 'center',
+    marginBottom: hp('4%'),
   },
   bookNowBtn: {
     backgroundColor: '#000',
     paddingVertical: hp('1.8%'),
     paddingHorizontal: wp('12%'),
-    borderRadius: wp('3%'),
+    borderRadius: wp('2%'),
   },
   bookNowText: {
     color: '#fff',
     fontSize: wp('4.5%'),
-    fontWeight: '600',
+    fontFamily: 'Lato-Black',
   },
 });
