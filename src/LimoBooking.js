@@ -51,7 +51,7 @@ const LimoBooking = () => {
               <Text style={styles.dispatchTitle}>Dispatch Line 24/7</Text>
               <View style={styles.callRow}>
                 <Icon name="call" size={wp(4.5)} color="#000" />
-                <Text style={styles.dispatchNumber}>+1 825-735-55381</Text>
+                <Text style={styles.dispatchNumber}>1 825-735-55381</Text>
               </View>
             </View>
           </TouchableOpacity>
@@ -59,7 +59,7 @@ const LimoBooking = () => {
           {/* Email */}
           <TouchableOpacity style={styles.contactRow} onPress={handleEmail}>
             <Icon name="mail" size={wp(4.5)} color="#000" />
-            <Text style={styles.contactText}>info@blacksedans.ca</Text>
+            <Text style={styles.contactText}>+info@blacksedans.ca</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -118,13 +118,14 @@ const styles = StyleSheet.create({
   },
   dispatchTitle: {
     fontSize: wp(4.2),
-    fontWeight: '500',
+    fontFamily: 'Poppins-Medium',
     color: '#000',
-    marginRight: wp(1.5),
+    marginRight: wp(7.2),
   },
   dispatchNumber: {
     fontSize: wp(3.2),
     color: '#000',
+    fontFamily: 'Poppins-Medium',
     marginLeft: wp(1),
   },
   contactRow: {
@@ -133,9 +134,10 @@ const styles = StyleSheet.create({
     marginBottom: hp(0.5),
   },
   contactText: {
-    fontSize: wp(3.2),
+    fontSize: wp(3.5),
     color: '#000',
-    marginLeft: wp(1.5),
+    fontFamily: 'Poppins-Medium',
+    marginLeft: wp(0.5),
   },
   webview: {
     flex: 1,
